@@ -57,8 +57,7 @@ if "text" not in st.session_state:
     st.session_state.text = EXAMPLES[0]
 
 # key="text" ties this box to st.session_state.text in both directions.
-st.text_area("Your sentence (English)", key="text", height=100)
-
+st.text_input("Your sentence (English), then press Enter", key="text")
 with st.expander("Examples"):
     for example in EXAMPLES:
         st.button(example, on_click=use_example, args=(example,))
