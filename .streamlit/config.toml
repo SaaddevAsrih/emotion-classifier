@@ -1,0 +1,5 @@
+# Streamlit normally watches every imported library for file changes.
+# With transformers that floods the log with harmless errors and wastes memory,
+# so the watcher is switched off.
+[server]
+fileWatcherType = "none"
