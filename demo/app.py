@@ -7,7 +7,7 @@ import streamlit as st
 from transformers import pipeline
 
 # Replace YOUR_USERNAME with your Hugging Face username.
-MODEL_ID = "saadddevasrih/emotion-distilbert"
+MODEL_ID = "Saaddevasrih/emotion-distilbert"
 
 EXAMPLES = [
     "i finally passed my exam and i cant stop smiling",
