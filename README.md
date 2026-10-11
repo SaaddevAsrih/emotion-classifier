@@ -5,7 +5,7 @@ Reads a short English sentence and names the emotion in it: sadness, joy, love, 
 The project compares two approaches on the same data: a simple word-counting baseline and a
 fine-tuned DistilBERT model.
 
-- **Live demo:** YOUR_STREAMLIT_URL
+- **Live demo:** https://emotion-classifier-qjr9unrcl7oae8bpzhtyj8.streamlit.app/
 - **Model:** https://huggingface.co/saaddevasrih/emotion-distilbert
 
 ![demo](demo.png)
