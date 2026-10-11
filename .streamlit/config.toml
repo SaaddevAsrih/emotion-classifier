@@ -3,3 +3,12 @@
 # so the watcher is switched off.
 [server]
 fileWatcherType = "none"
+
+# A fixed light theme, so the app looks the same for every visitor
+# (without this, Streamlit follows the visitor's dark or light system setting).
+[theme]
+base = "light"
+primaryColor = "#1C1B2E"
+backgroundColor = "#F5F6FA"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#1C1B2E"

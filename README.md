@@ -10,6 +10,10 @@ fine-tuned DistilBERT model.
 
 ![demo](demo.png)
 
+In the demo, the page takes on the colour of the emotion the model finds, and the colour is stronger
+when the model is surer. One strip shows how the 100% is shared between the six emotions, so a strip
+with several colours means the model is unsure.
+
 ## Results
 
 Measured once on the test set (2,000 sentences that neither model saw during training).
@@ -57,7 +61,11 @@ DistilBERT reads each word in the context of the others and gets both of these r
 
 - Some labels are debatable, so no model can reach 100% here.
 - There is no neutral class. The model always picks one of the six emotions, even for a sentence
-  without any emotion. The demo therefore shows the probability of all six.
+  without any emotion. "the train leaves at five" comes out as fear with only 34%. The demo therefore
+  shows the share of all six emotions.
+- Simple negation can fool it. "i am not happy about this at all" is classified as joy with 99%
+  confidence. Only 2 of the 16,000 training sentences contain "not happy" (`check_negation.py`),
+  so the model never learned that pattern. A high percentage does not guarantee a correct answer.
 - The texts are short, lowercase and in English. Other styles and languages will work worse.
 
 ## How it works
@@ -67,6 +75,7 @@ DistilBERT reads each word in the context of the others and gets both of these r
 | `explore.py` | Prints the size of the splits, how often each emotion appears, and example sentences |
 | `baseline.py` | Turns text into TF-IDF word counts, trains a logistic regression, and evaluates it |
 | `train_distilbert.ipynb` | Fine-tunes `distilbert-base-uncased` for 3 epochs on Google Colab (T4 GPU) and evaluates it |
+| `check_negation.py` | Counts the training sentences that contain "not happy" and shows their labels |
 | `demo/app.py` | Streamlit app that loads the model from the Hugging Face Hub |
 
 The dataset is already split into 16,000 training, 2,000 validation and 2,000 test sentences.
@@ -104,6 +113,7 @@ The dataset is provided for educational and research purposes.
 
 ## Ideas for later
 
+- Add negated example sentences to the training data and retrain
 - Give the rare emotions more weight during training, to improve surprise
 - Try a larger model and compare the gain with the extra cost
 - Add a neutral class from another dataset
